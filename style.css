@@ -34,9 +34,7 @@ body {
   color: var(--text);
   font-family: var(--font-body);
   line-height: 1.6;
-  background:
-    linear-gradient(180deg, rgba(245, 248, 251, 0.7), rgba(255, 255, 255, 0) 360px),
-    var(--white);
+  background: var(--navy);
 }
 
 body.menu-open {
@@ -185,7 +183,7 @@ select {
 }
 
 .hero {
-  min-height: calc(100vh - 78px);
+  min-height: 100vh;
   display: flex;
   align-items: center;
   padding-top: 96px;
@@ -462,6 +460,7 @@ select {
   margin-top: -48px;
   position: relative;
   z-index: 4;
+  background: var(--white);
 }
 
 .stats-grid {
