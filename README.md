@@ -1,199 +1,173 @@
-<div align="center">
+# Pandurang Pratishthan NGO Website
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:020617,45:0f172a,100:2563eb&height=220&section=header&text=Akash&fontSize=58&fontColor=ffffff&fontAlignY=38&desc=Frontend%20Developer%20%7C%20React%20Learner%20%7C%20Cyber%20Security%20Enthusiast&descAlignY=58&animation=fadeIn" />
+A production-ready static website for **Pandurang Pratishthan**, an NGO focused on education support, environment work, village cleaning, social awareness, and rural development.
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=500&size=25&pause=1100&color=22D3EE&center=true&vCenter=true&width=950&lines=Building+modern+frontend+experiences;Learning+React%2C+APIs%2C+and+full-stack+development;Exploring+cyber+security+and+ethical+hacking;Working+with+MongoDB+and+MySQL" alt="Typing SVG" />
+## Live Link
 
-<br/>
+Add Vercel URL here:
 
-<img src="https://img.shields.io/badge/Portfolio%20Mode-Enabled-111827?style=for-the-badge&logo=vercel&logoColor=white" />
-<img src="https://img.shields.io/badge/React-Frontend%20Focused-111827?style=for-the-badge&logo=react&logoColor=61DAFB" />
-<img src="https://img.shields.io/badge/Cyber%20Security-Curious%20Builder-111827?style=for-the-badge&logo=hackthebox&logoColor=9FEF00" />
-<img src="https://img.shields.io/badge/Dark%20UI-Premium%20Aesthetic-111827?style=for-the-badge&logo=github&logoColor=white" />
+`https://your-vercel-project.vercel.app/`
 
-<br/><br/>
+## Features
 
-<a href="https://github.com/ash-krsna">
-  <img src="https://img.shields.io/badge/GitHub-Portfolio_Home-0f172a?style=for-the-badge&logo=github&logoColor=white" />
-</a>
-<a href="https://ash-krsna.github.io/codex-">
-  <img src="https://img.shields.io/badge/Portfolio-Live_Showcase-14b8a6?style=for-the-badge&logo=firefoxbrowser&logoColor=white" />
-</a>
-
-</div>
-
----
-
-## Portfolio Snapshot
-
-<table>
-  <tr>
-    <td width="60%">
-
-### Akash
-
-Frontend developer focused on building modern, responsive, and visually clean web experiences with **JavaScript** and **React**.
-I bring a **portfolio mindset** to everything I build: sharp UI, clean structure, meaningful interactions, and a growing **cyber security awareness** that keeps products thoughtful and resilient.
-
-I enjoy turning ideas into interfaces that feel polished, practical, and professional.
-
-  </td>
-    <td width="40%">
-
-```bash
-> whoami
-Akash
-
-> current_focus
-React + APIs + Full-Stack Development
-
-> mindset
-Build clean. Learn fast. Think secure.
-
-> status
-Open to projects and collaboration
-```
-
-  </td>
-  </tr>
-</table>
-
----
-
-## About Me
-
-- Passionate frontend developer building modern web applications
-- Learning React, APIs, and full-stack development
-- Exploring Cyber Security and ethical hacking
-- Working with MongoDB and MySQL
-- Interested in clean UI, responsive design, and practical JavaScript projects
-
----
+- Responsive mobile-first layout
+- Sticky navigation with active section highlighting
+- Emotional hero section and mission statement
+- About, vision, mission, founder/team, and trust details
+- Causes/work area cards
+- Donation form with amount selection and custom amount
+- Razorpay payment link/button placeholder
+- UPI QR and bank transfer placeholders
+- Volunteer and contact forms with validation
+- Loading states and success/error messages
+- localStorage backup when no form API is configured
+- WhatsApp click-to-chat integration
+- Gallery filters
+- Impact timeline, before/after cards, and testimonials
+- SEO meta tags and Open Graph tags
+- Vercel and GitHub Pages friendly static files
 
 ## Tech Stack
 
-<div align="center">
-  <img src="https://skillicons.dev/icons?i=html,css,bootstrap,js,react,nodejs,mongodb,mysql,linux,github,vscode&theme=dark" />
-</div>
+- HTML5
+- CSS3
+- Vanilla JavaScript
+- Font Awesome icons via CDN
 
-<br/>
-
-<table>
-  <tr>
-    <td><strong>Frontend</strong></td>
-    <td>HTML, CSS, Bootstrap, JavaScript, React</td>
-  </tr>
-  <tr>
-    <td><strong>Backend & Database</strong></td>
-    <td>Node.js, MongoDB, MySQL</td>
-  </tr>
-  <tr>
-    <td><strong>Cyber Security</strong></td>
-    <td>Linux, Networking Basics, Web Security Fundamentals</td>
-  </tr>
-</table>
-
----
-
-## Featured Work
-
-<table>
-  <tr>
-    <td width="100%">
-
-### Vehicle Tracker
-
-A responsive web application that allows users to track vehicle details using dynamic UI and JavaScript-based interactions.
-
-**Tech Stack**
-- HTML
-- CSS
-- JavaScript
-
-<a href="https://ash-krsna.github.io/codex-">
-  <img src="https://img.shields.io/badge/Live_Demo-Open_Project-22c55e?style=for-the-badge&logo=vercel&logoColor=white" />
-</a>
-<a href="https://github.com/ash-krsna">
-  <img src="https://img.shields.io/badge/GitHub-View_Profile-111827?style=for-the-badge&logo=github&logoColor=white" />
-</a>
-
-  </td>
-  </tr>
-</table>
-
----
-
-## Cyber Security Journey
-
-<div align="center">
+## Project Structure
 
 ```text
-[ akash@secure-terminal ] $ boot --security-profile
-[OK] Exploring secure development practices
-[OK] Learning to think like an attacker
-[OK] Understanding safer frontend patterns
-[OK] Building projects with a defense mindset
+.
+├── index.html
+├── style.css
+├── script.js
+├── assets/
+│   └── images/
+│       ├── logo.png
+│       ├── education.jpg
+│       ├── environment.jpg
+│       └── village-cleaning.jpg
+├── README.md
+└── .gitignore
 ```
 
-</div>
+## Setup
 
-- Exploring cyber security alongside frontend development
-- Interested in ethical hacking, web application risks, and secure design thinking
-- Learning topics such as authentication flow safety, browser vulnerabilities, and OWASP fundamentals
-- Using that knowledge to become a developer who builds with more awareness and responsibility
+1. Clone or download the repository.
+2. Open `index.html` in a browser.
+3. Update placeholders in `index.html` and `script.js`.
+4. Deploy on Vercel with no build command, or deploy to GitHub Pages from the repository settings.
 
----
+No build step is required.
 
-## GitHub Analytics
+## Required Placeholder Updates Before Launch
 
-<div align="center">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=ash-krsna&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=22D3EE&icon_color=22D3EE&text_color=C9D1D9" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ash-krsna&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=22D3EE&text_color=C9D1D9" />
-</div>
+Update these values with verified organization details:
 
-<div align="center">
-  <img height="180em" src="https://streak-stats.demolab.com?user=ash-krsna&theme=tokyonight&hide_border=true&background=0D1117&ring=22D3EE&fire=22D3EE&currStreakLabel=22D3EE" />
-</div>
+- NGO Registration No
+- PAN
+- 80G No
+- FCRA status
+- Founder/team names
+- Phone number
+- Email address
+- Office address
+- Social media links
+- Bank transfer details
+- UPI ID and QR image
+- Google Maps iframe
+- Testimonials
+- Real impact numbers, if different from placeholders
 
----
+## Razorpay Integration
 
-## Achievements
+In `index.html`, search for:
 
-<div align="center">
-  <img src="https://img.shields.io/badge/UI-Building%20with%20Intent-38bdf8?style=for-the-badge&logo=css3&logoColor=white" />
-  <img src="https://img.shields.io/badge/React-Component%20Driven-61DAFB?style=for-the-badge&logo=react&logoColor=0D1117" />
-  <img src="https://img.shields.io/badge/JavaScript-Always%20Improving-F7DF1E?style=for-the-badge&logo=javascript&logoColor=0D1117" />
-  <img src="https://img.shields.io/badge/Security-Mindset%20Active-9FEF00?style=for-the-badge&logo=hackthebox&logoColor=0D1117" />
-</div>
+```html
+RAZORPAY INTEGRATION PLACEHOLDER
+```
 
-- Built project work with a stronger focus on interface quality and user experience
-- Growing as a frontend developer through React-based practice and real implementations
-- Developing a blended identity of **developer + security-aware builder**
-- Working toward a portfolio that feels both creative and professional
+You can either:
 
----
+- Paste the official Razorpay Payment Button script there.
+- Replace the placeholder link with a Razorpay Payment Link.
 
-## Contact
+In `script.js`, update:
 
-<div align="center">
+```js
+razorpayPaymentLink: "ADD_RAZORPAY_PAYMENT_LINK"
+```
 
-<a href="https://github.com/ash-krsna">
-  <img src="https://img.shields.io/badge/GitHub-Follow_Profile-111827?style=for-the-badge&logo=github&logoColor=white" />
-</a>
-<a href="https://ash-krsna.github.io/codex-">
-  <img src="https://img.shields.io/badge/Portfolio-Visit_Site-14b8a6?style=for-the-badge&logo=firefoxbrowser&logoColor=white" />
-</a>
+## Form Integration
 
-</div>
+The forms currently validate data and save a local browser backup if no API endpoint is configured.
 
----
+To connect Formspree or Google Apps Script, update this value in `script.js`:
 
-<div align="center">
+```js
+formEndpoint: "ADD_FORMSPREE_OR_GOOGLE_APPS_SCRIPT_ENDPOINT"
+```
 
-## Quote
+To connect EmailJS, add the EmailJS browser SDK to `index.html`, then update:
 
-> "Build interfaces that feel powerful, write code that stays clean, and think one step ahead."
+```js
+serviceId: "ADD_EMAILJS_SERVICE_ID"
+templateId: "ADD_EMAILJS_TEMPLATE_ID"
+publicKey: "ADD_EMAILJS_PUBLIC_KEY"
+```
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:020617,50:0f172a,100:2563eb&height=120&section=footer" />
+## WhatsApp Integration
 
-</div>
+In `script.js`, replace:
+
+```js
+whatsappNumber: "910000000000"
+```
+
+Use the country code and phone number without `+`, spaces, or dashes.
+
+## Google Maps
+
+In `index.html`, search for:
+
+```html
+GOOGLE MAPS PLACEHOLDER
+```
+
+Replace the placeholder block with the iframe embed copied from Google Maps.
+
+## Vercel Deployment
+
+### Option 1: Vercel Dashboard
+
+1. Push this repository to GitHub.
+2. Open [Vercel](https://vercel.com/).
+3. Select `Add New Project`.
+4. Import this repository.
+5. Keep the framework preset as `Other`.
+6. Leave the build command empty.
+7. Leave the output directory empty.
+8. Deploy.
+
+### Option 2: Vercel CLI
+
+```bash
+npm i -g vercel
+vercel
+vercel --prod
+```
+
+The included `vercel.json` sets clean URLs, static asset caching, and basic security headers.
+
+## GitHub Pages Deployment
+
+1. Push this repository to GitHub.
+2. Go to repository `Settings`.
+3. Open `Pages`.
+4. Select the branch, usually `main`.
+5. Select `/root` as the source folder.
+6. Save and wait for the live URL.
+
+## Legal Note
+
+Donation, tax exemption, FCRA, and registration information must be verified by Pandurang Pratishthan before publishing or accepting donations.
