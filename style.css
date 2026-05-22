@@ -662,14 +662,6 @@ blockquote p {
   font-size: 0.9rem;
 }
 
-.motto-card {
-  margin: 0 0 16px;
-  padding: 12px;
-  border-radius: var(--radius);
-  color: var(--navy);
-  background: var(--green-soft);
-}
-
 .receipt-note {
   display: grid;
   gap: 4px;

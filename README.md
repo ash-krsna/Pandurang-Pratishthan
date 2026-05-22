@@ -2,7 +2,7 @@
 
 A production-ready static website for **Pandurang Pratishthan**, an NGO focused on education support, environment work, village cleaning, social awareness, and rural development.
 
-Logo motto included on the website: **तेजोमय भवितव्याकडे**.
+The website uses the logo motto **तेजोमय भवितव्याकडे** as a subtle brand accent.
 
 ## Live Link
 
