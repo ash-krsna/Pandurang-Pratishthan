@@ -22,7 +22,7 @@ Add Vercel URL here:
 - Secure Razorpay checkout through Vercel serverless API routes
 - Razorpay order creation and payment signature verification
 - UPI QR and bank transfer placeholders
-- Volunteer and contact forms with validation
+- Volunteer and contact forms connected to FormSubmit
 - Loading states and success/error messages
 - localStorage backup when no form API is configured
 - WhatsApp click-to-chat integration
@@ -117,15 +117,23 @@ Create a local `.env` file using `.env.example` as a reference. Do not commit `.
 
 ## Form Integration
 
-The forms currently validate data and save a local browser backup if no API endpoint is configured.
+Volunteer and contact forms submit to:
 
-To connect Formspree or Google Apps Script, update this value in `script.js`:
+`akash.gita.bhagwat@gmail.com`
+
+They use FormSubmit's AJAX endpoint:
 
 ```js
-formEndpoint: "ADD_FORMSPREE_OR_GOOGLE_APPS_SCRIPT_ENDPOINT"
+formEndpoint: "https://formsubmit.co/ajax/akash.gita.bhagwat@gmail.com"
 ```
 
-To connect EmailJS, add the EmailJS browser SDK to `index.html`, then update:
+Important: the first FormSubmit email may require inbox verification before submissions are delivered.
+
+The JavaScript still keeps a local browser backup if the online submission fails.
+
+To switch to Formspree or Google Apps Script later, replace `formEndpoint` in `script.js`.
+
+EmailJS placeholders are still available in `script.js` if the project later moves to EmailJS:
 
 ```js
 serviceId: "ADD_EMAILJS_SERVICE_ID"

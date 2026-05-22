@@ -2,7 +2,7 @@ const CONFIG = {
   ngoName: "Pandurang Pratishthan",
   whatsappNumber: "910000000000",
   apiBase: "/api",
-  formEndpoint: "ADD_FORMSPREE_OR_GOOGLE_APPS_SCRIPT_ENDPOINT",
+  formEndpoint: "https://formsubmit.co/ajax/akash.gita.bhagwat@gmail.com",
   emailJs: {
     serviceId: "ADD_EMAILJS_SERVICE_ID",
     templateId: "ADD_EMAILJS_TEMPLATE_ID",
@@ -134,8 +134,8 @@ filterButtons.forEach((button) => {
 });
 
 setupDonationForm();
-setupForm("volunteerForm", "volunteerMessage", "volunteerSubmissions", "Thank you for volunteering. We will contact you soon.");
-setupForm("contactForm", "contactMessage", "contactSubmissions", "Thank you. Your message has been saved and we will respond soon.");
+setupForm("volunteerForm", "volunteerMessage", "volunteerSubmissions", "Thank you for volunteering. Your request has been sent to the NGO team.");
+setupForm("contactForm", "contactMessage", "contactSubmissions", "Thank you. Your message has been sent to the NGO team.");
 
 function setupDonationForm() {
   const form = document.querySelector("#donationForm");
@@ -352,12 +352,39 @@ async function sendToConfiguredEndpoint(data, formId) {
     return false;
   }
 
+  const payload = {
+    ...data,
+    _subject: getFormSubject(formId),
+    _template: "table",
+    _captcha: "false",
+    _replyto: data.email || ""
+  };
+
+  if (CONFIG.formEndpoint.includes("formsubmit.co")) {
+    const body = new FormData();
+    Object.entries(payload).forEach(([key, value]) => body.append(key, value));
+
+    // FORMSUBMIT:
+    // The first submission may require email verification from FormSubmit.
+    const response = await fetch(CONFIG.formEndpoint, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body
+    });
+
+    if (!response.ok) {
+      throw new Error("FormSubmit returned an error.");
+    }
+
+    return true;
+  }
+
   // FORMSPREE / GOOGLE APPS SCRIPT:
-  // Set CONFIG.formEndpoint above. This POST request will send all form data as JSON.
+  // Set CONFIG.formEndpoint above. This POST request sends all form data as JSON.
   const response = await fetch(CONFIG.formEndpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ formId, ...data })
+    body: JSON.stringify({ formId, ...payload })
   });
 
   if (!response.ok) {
@@ -365,6 +392,18 @@ async function sendToConfiguredEndpoint(data, formId) {
   }
 
   return true;
+}
+
+function getFormSubject(formId) {
+  if (formId === "volunteerForm") {
+    return "New volunteer request - Pandurang Pratishthan";
+  }
+
+  if (formId === "contactForm") {
+    return "New contact message - Pandurang Pratishthan";
+  }
+
+  return "New website submission - Pandurang Pratishthan";
 }
 
 function saveSubmission(storageKey, data) {
@@ -387,6 +426,7 @@ whatsappButton.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${whatsappMes
 // Add RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in Vercel environment variables.
 // The browser calls /api/create-order and /api/verify-payment so secret keys never ship to users.
 
-// EMAILJS:
-// Include EmailJS browser SDK in index.html, then use CONFIG.emailJs values here to send email.
-// This file currently uses Formspree/Google Apps Script style POST plus localStorage fallback.
+// FORM EMAIL:
+// Volunteer and contact forms submit through FormSubmit to akash.gita.bhagwat@gmail.com.
+// The first email may need FormSubmit verification before delivery becomes active.
+// You can still replace CONFIG.formEndpoint with Formspree or Google Apps Script later.

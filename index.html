@@ -331,7 +331,10 @@
           <h2 id="volunteer-title">Offer your time, skill, and care.</h2>
           <p>Volunteers can support education drives, plantations, awareness sessions, documentation, fundraising, and local coordination.</p>
         </div>
-        <form class="form-card" id="volunteerForm" novalidate>
+        <form class="form-card" id="volunteerForm" action="https://formsubmit.co/ajax/akash.gita.bhagwat@gmail.com" method="POST" novalidate>
+          <input type="hidden" name="_subject" value="New volunteer request - Pandurang Pratishthan">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
           <div class="form-grid">
             <label>Name
               <input type="text" name="name" required autocomplete="name">
@@ -361,10 +364,9 @@
           <label>Message
             <textarea name="message" rows="4" required></textarea>
           </label>
-          <!-- EMAILJS / FORMSPREE / GOOGLE APPS SCRIPT PLACEHOLDER:
-            EmailJS: Add SERVICE_ID, TEMPLATE_ID, and PUBLIC_KEY in script.js.
-            Formspree: Replace FORM_ENDPOINT in script.js with your endpoint.
-            Google Apps Script: Replace FORM_ENDPOINT with deployed web app URL.
+          <!-- FORMSUBMIT:
+            Volunteer requests are sent to akash.gita.bhagwat@gmail.com through FormSubmit.
+            The first FormSubmit email may require verification from that inbox.
           -->
           <button class="btn btn-primary full" type="submit"><i class="fa-solid fa-paper-plane"></i> Send Volunteer Request</button>
           <p class="form-message" id="volunteerMessage" role="status" aria-live="polite"></p>
@@ -490,8 +492,11 @@
           </div>
         </div>
 
-        <form class="form-card" id="contactForm" novalidate>
+        <form class="form-card" id="contactForm" action="https://formsubmit.co/ajax/akash.gita.bhagwat@gmail.com" method="POST" novalidate>
           <h3>Send a message</h3>
+          <input type="hidden" name="_subject" value="New contact message - Pandurang Pratishthan">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
           <div class="form-grid">
             <label>Name
               <input type="text" name="name" required autocomplete="name">
