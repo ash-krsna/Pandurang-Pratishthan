@@ -2,6 +2,8 @@
 
 A production-ready static website for **Pandurang Pratishthan**, an NGO focused on education support, environment work, village cleaning, social awareness, and rural development.
 
+Logo motto included on the website: **तेजोमय भवितव्याकडे**.
+
 ## Live Link
 
 Add Vercel URL here:
@@ -13,10 +15,12 @@ Add Vercel URL here:
 - Responsive mobile-first layout
 - Sticky navigation with active section highlighting
 - Emotional hero section and mission statement
+- Marathi motto and selected Marathi value quotes
 - About, vision, mission, founder/team, and trust details
 - Causes/work area cards
 - Donation form with amount selection and custom amount
-- Razorpay payment link/button placeholder
+- Secure Razorpay checkout through Vercel serverless API routes
+- Razorpay order creation and payment signature verification
 - UPI QR and bank transfer placeholders
 - Volunteer and contact forms with validation
 - Loading states and success/error messages
@@ -41,6 +45,9 @@ Add Vercel URL here:
 ├── index.html
 ├── style.css
 ├── script.js
+├── api/
+│   ├── create-order.js
+│   └── verify-payment.js
 ├── assets/
 │   └── images/
 │       ├── logo.png
@@ -48,6 +55,9 @@ Add Vercel URL here:
 │       ├── environment.jpg
 │       └── village-cleaning.jpg
 ├── README.md
+├── package.json
+├── vercel.json
+├── .env.example
 └── .gitignore
 ```
 
@@ -81,22 +91,29 @@ Update these values with verified organization details:
 
 ## Razorpay Integration
 
-In `index.html`, search for:
+This project uses Vercel serverless API routes so Razorpay secret keys are never exposed in browser code.
 
-```html
-RAZORPAY INTEGRATION PLACEHOLDER
+Required Vercel environment variables:
+
+```bash
+RAZORPAY_KEY_ID=rzp_test_your_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
 ```
 
-You can either:
+Files used:
 
-- Paste the official Razorpay Payment Button script there.
-- Replace the placeholder link with a Razorpay Payment Link.
+- `api/create-order.js` creates the Razorpay order securely.
+- `api/verify-payment.js` verifies the Razorpay payment signature.
+- `script.js` opens Razorpay Checkout and calls the verification API.
 
-In `script.js`, update:
+For local payment testing with Vercel CLI:
 
-```js
-razorpayPaymentLink: "ADD_RAZORPAY_PAYMENT_LINK"
+```bash
+npm i -g vercel
+vercel dev
 ```
+
+Create a local `.env` file using `.env.example` as a reference. Do not commit `.env`.
 
 ## Form Integration
 
@@ -147,7 +164,8 @@ Replace the placeholder block with the iframe embed copied from Google Maps.
 5. Keep the framework preset as `Other`.
 6. Leave the build command empty.
 7. Leave the output directory empty.
-8. Deploy.
+8. Add `RAZORPAY_KEY_ID` and `RAZORPAY_KEY_SECRET` in project environment variables.
+9. Deploy.
 
 ### Option 2: Vercel CLI
 

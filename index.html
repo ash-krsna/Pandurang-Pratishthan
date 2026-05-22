@@ -17,6 +17,7 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="./style.css">
+  <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
 </head>
 <body>
   <header class="site-header" id="top">
@@ -25,7 +26,7 @@
         <img src="./assets/images/logo.png" alt="Pandurang Pratishthan logo">
         <span>
           <strong>Pandurang Pratishthan</strong>
-          <small>Service. Education. Environment.</small>
+          <small>तेजोमय भवितव्याकडे</small>
         </span>
       </a>
 
@@ -50,17 +51,18 @@
     <section class="hero section" id="home">
       <div class="container hero-grid">
         <div class="hero-content">
-          <p class="eyebrow">A community-first NGO rooted in seva</p>
+          <p class="eyebrow">तेजोमय भवितव्याकडे</p>
           <h1>Small acts of service can change a child, a village, and a future.</h1>
           <p class="hero-text">Pandurang Pratishthan works with citizens, volunteers, and local communities to support education, protect the environment, strengthen rural cleanliness, and spread social awareness with dignity.</p>
+          <p class="hero-motto">Our guiding motto means moving together toward a brighter future.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#donate"><i class="fa-solid fa-heart"></i> Donate Now</a>
             <a class="btn btn-secondary" href="#volunteer"><i class="fa-solid fa-handshake-angle"></i> Become Volunteer</a>
             <a class="btn btn-ghost" href="#contact"><i class="fa-solid fa-phone"></i> Contact Us</a>
           </div>
           <div class="trust-row" aria-label="Trust highlights">
-            <span><i class="fa-solid fa-receipt"></i> 80G details placeholder</span>
-            <span><i class="fa-solid fa-shield-heart"></i> Transparent donation records</span>
+            <span><i class="fa-solid fa-receipt"></i> 80G receipt details collected</span>
+            <span><i class="fa-solid fa-shield-heart"></i> Secure Razorpay checkout</span>
           </div>
         </div>
 
@@ -105,6 +107,23 @@
           <h2 id="mission-title">To serve people with respect, practical support, and long-term community care.</h2>
         </div>
         <p>Pandurang Pratishthan believes that real impact begins with listening. We work with local families, schools, volunteers, and village leaders to identify needs and respond through education support, environment action, cleanliness initiatives, and awareness programs.</p>
+      </div>
+    </section>
+
+    <section class="quote-band" aria-label="Marathi values">
+      <div class="container quote-grid">
+        <blockquote>
+          <p>“सेवा हीच खरी साधना.”</p>
+          <cite>Service is our truest practice.</cite>
+        </blockquote>
+        <blockquote>
+          <p>“ज्ञान, स्वच्छता आणि निसर्गातून समाजाचा विकास.”</p>
+          <cite>Education, cleanliness, and nature guide community progress.</cite>
+        </blockquote>
+        <blockquote>
+          <p>“एक हात मदतीचा, एक पाऊल उज्ज्वल भविष्याकडे.”</p>
+          <cite>One helping hand, one step toward a brighter future.</cite>
+        </blockquote>
       </div>
     </section>
 
@@ -159,14 +178,16 @@
           </div>
 
           <aside class="trust-panel" aria-labelledby="trust-title">
-            <h3 id="trust-title">Registration & compliance</h3>
+            <h3 id="trust-title">Pandurang Pratishthan details</h3>
+            <p class="motto-card"><strong>Logo motto:</strong> तेजोमय भवितव्याकडे</p>
             <ul>
-              <li><span>NGO Registration No</span><strong>ADD-REGISTRATION-NO</strong></li>
-              <li><span>PAN</span><strong>ADD-PAN-NO</strong></li>
-              <li><span>80G No</span><strong>ADD-80G-NO</strong></li>
-              <li><span>FCRA Status</span><strong>Not applicable / Add status</strong></li>
+              <li><span>Organization</span><strong>Pandurang Pratishthan</strong></li>
+              <li><span>NGO Registration No</span><strong>ADD-VERIFIED-REG-NO</strong></li>
+              <li><span>PAN</span><strong>ADD-VERIFIED-PAN</strong></li>
+              <li><span>80G No</span><strong>ADD-VERIFIED-80G-NO</strong></li>
+              <li><span>FCRA Status</span><strong>Add verified status</strong></li>
             </ul>
-            <p class="small-note">Verify all legal and tax details before accepting public donations.</p>
+            <p class="small-note">Only publish legal, tax, and FCRA details after verification by the NGO.</p>
           </aside>
         </div>
       </div>
@@ -221,7 +242,7 @@
         <div>
           <p class="eyebrow">Donate online</p>
           <h2 id="donate-title">Your contribution becomes books, trees, cleaner villages, and hope.</h2>
-          <p>Choose an amount or enter a custom contribution. This static demo includes clear Razorpay, UPI, and bank transfer placeholders for production setup.</p>
+          <p>Choose an amount or enter a custom contribution. Online payments are processed by Razorpay through secure Vercel serverless API routes, so secret keys never appear in browser code.</p>
           <div class="payment-box">
             <h3>Payment options</h3>
             <div class="payment-tabs" role="tablist" aria-label="Payment options">
@@ -230,13 +251,12 @@
               <button class="payment-tab" type="button" data-payment="bank">Bank Transfer</button>
             </div>
             <div class="payment-panel active" id="razorpay">
-              <p><strong>Razorpay placeholder:</strong> Paste your Razorpay payment button script or payment link in the marked area in <code>index.html</code>.</p>
-              <!-- RAZORPAY INTEGRATION PLACEHOLDER:
-                Option 1: Paste Razorpay Payment Button script here.
-                Option 2: Replace the link below with your Razorpay Payment Link.
-                Example: https://rzp.io/l/YOUR_PAYMENT_LINK
-              -->
-              <a class="btn btn-primary" href="#" aria-disabled="true"><i class="fa-solid fa-credit-card"></i> Razorpay Link Placeholder</a>
+              <p><strong>Secure online payment:</strong> The donation form creates a Razorpay order on the server and verifies the payment signature after checkout.</p>
+              <ul class="security-list">
+                <li><i class="fa-solid fa-lock"></i> Secret keys stay inside Vercel environment variables.</li>
+                <li><i class="fa-solid fa-shield-check"></i> Payment signature is verified before showing success.</li>
+                <li><i class="fa-solid fa-receipt"></i> Receipt details are captured for email or WhatsApp follow-up.</li>
+              </ul>
             </div>
             <div class="payment-panel" id="upi">
               <div class="qr-placeholder" aria-label="UPI QR code placeholder">
@@ -294,8 +314,11 @@
               <option>General donation</option>
             </select>
           </label>
-          <p class="small-note">Receipt will be shared by email or WhatsApp. 80G receipt placeholders: 80G certificate no, donor PAN, registered address, and receipt serial number.</p>
-          <button class="btn btn-primary full" type="submit"><i class="fa-solid fa-circle-check"></i> Submit Donation Details</button>
+          <div class="receipt-note">
+            <strong>Receipt note</strong>
+            <span>Receipt will be shared by email or WhatsApp after payment confirmation. Update 80G certificate number, NGO registered address, and receipt series before launch.</span>
+          </div>
+          <button class="btn btn-primary full" type="submit"><i class="fa-solid fa-lock"></i> Pay Securely with Razorpay</button>
           <p class="form-message" id="donationMessage" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -430,12 +453,12 @@
 
         <div class="testimonial-grid">
           <blockquote>
-            <p>"Add a verified beneficiary or volunteer testimonial here after permission."</p>
-            <cite>Beneficiary Name, Village Name</cite>
+            <p>“मुलांच्या शिक्षणासाठी केलेली मदत म्हणजे समाजाच्या उद्याची गुंतवणूक.”</p>
+            <cite>Education support value</cite>
           </blockquote>
           <blockquote>
-            <p>"Add a donor or teacher testimonial here to strengthen trust with real voices."</p>
-            <cite>Teacher / Donor Name</cite>
+            <p>“स्वच्छ गाव, सुंदर गाव, निरोगी गाव.”</p>
+            <cite>Village cleanliness value</cite>
           </blockquote>
         </div>
       </div>
@@ -498,7 +521,7 @@
       <div>
         <a class="brand footer-brand" href="#home">
           <img src="./assets/images/logo.png" alt="Pandurang Pratishthan logo">
-          <span><strong>Pandurang Pratishthan</strong><small>Serving communities with care</small></span>
+          <span><strong>Pandurang Pratishthan</strong><small>तेजोमय भवितव्याकडे</small></span>
         </a>
         <p>Replace placeholders with verified details before accepting donations or publishing legal claims.</p>
       </div>

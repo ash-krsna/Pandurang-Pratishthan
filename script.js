@@ -1,12 +1,13 @@
 const CONFIG = {
+  ngoName: "Pandurang Pratishthan",
   whatsappNumber: "910000000000",
+  apiBase: "/api",
   formEndpoint: "ADD_FORMSPREE_OR_GOOGLE_APPS_SCRIPT_ENDPOINT",
   emailJs: {
     serviceId: "ADD_EMAILJS_SERVICE_ID",
     templateId: "ADD_EMAILJS_TEMPLATE_ID",
     publicKey: "ADD_EMAILJS_PUBLIC_KEY"
-  },
-  razorpayPaymentLink: "ADD_RAZORPAY_PAYMENT_LINK"
+  }
 };
 
 const navToggle = document.querySelector(".nav-toggle");
@@ -132,9 +133,140 @@ filterButtons.forEach((button) => {
   });
 });
 
-setupForm("donationForm", "donationMessage", "donationSubmissions", "Donation details saved. Please complete payment using the selected option.");
+setupDonationForm();
 setupForm("volunteerForm", "volunteerMessage", "volunteerSubmissions", "Thank you for volunteering. We will contact you soon.");
 setupForm("contactForm", "contactMessage", "contactSubmissions", "Thank you. Your message has been saved and we will respond soon.");
+
+function setupDonationForm() {
+  const form = document.querySelector("#donationForm");
+  const message = document.querySelector("#donationMessage");
+  if (!form || !message) return;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    clearFormState(form, message);
+
+    if (!validateForm(form)) {
+      showMessage(message, "Please check the highlighted fields before payment.", "error");
+      return;
+    }
+
+    const button = form.querySelector("button[type='submit']");
+    setLoading(button, true, "Opening secure checkout...");
+    const donor = Object.fromEntries(new FormData(form).entries());
+    donor.amount = Number(selectedAmount.value);
+    donor.createdAt = new Date().toISOString();
+
+    try {
+      if (!window.Razorpay) {
+        throw new Error("Razorpay checkout script did not load.");
+      }
+
+      const order = await createRazorpayOrder(donor);
+      await openRazorpayCheckout(order, donor);
+      saveSubmission("donationSubmissions", {
+        ...donor,
+        razorpayOrderId: order.orderId,
+        paymentStatus: "verified"
+      });
+      showMessage(message, "Donation successful. Thank you for supporting Pandurang Pratishthan. Receipt details have been saved for follow-up.", "success");
+      form.reset();
+      restoreDonationDefault("donationForm");
+    } catch (error) {
+      const fallback = {
+        ...donor,
+        paymentStatus: "not_completed",
+        error: error.message
+      };
+      saveSubmission("donationSubmissions", fallback);
+      showMessage(message, error.message || "Payment could not be completed. Please try again or contact us on WhatsApp.", "error");
+    } finally {
+      setLoading(button, false);
+    }
+  });
+}
+
+async function createRazorpayOrder(donor) {
+  const response = await fetch(`${CONFIG.apiBase}/create-order`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      amount: donor.amount,
+      donorName: donor.name,
+      donorEmail: donor.email,
+      donorPhone: donor.phone,
+      purpose: donor.purpose
+    })
+  });
+
+  const payload = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(payload.error || "Unable to create secure payment order.");
+  }
+
+  return payload;
+}
+
+function openRazorpayCheckout(order, donor) {
+  return new Promise((resolve, reject) => {
+    const checkout = new window.Razorpay({
+      key: order.keyId,
+      amount: order.amount,
+      currency: order.currency,
+      name: CONFIG.ngoName,
+      description: donor.purpose || "Donation",
+      order_id: order.orderId,
+      prefill: {
+        name: donor.name,
+        email: donor.email,
+        contact: donor.phone
+      },
+      notes: {
+        purpose: donor.purpose || "General donation",
+        donorPan: donor.pan || "Not provided"
+      },
+      theme: {
+        color: "#1f7a4c"
+      },
+      handler: async (response) => {
+        try {
+          await verifyRazorpayPayment(response, donor);
+          resolve(response);
+        } catch (error) {
+          reject(error);
+        }
+      },
+      modal: {
+        ondismiss: () => reject(new Error("Payment was cancelled before completion."))
+      }
+    });
+
+    checkout.open();
+  });
+}
+
+async function verifyRazorpayPayment(payment, donor) {
+  const response = await fetch(`${CONFIG.apiBase}/verify-payment`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      ...payment,
+      donorName: donor.name,
+      donorEmail: donor.email,
+      amount: donor.amount,
+      purpose: donor.purpose
+    })
+  });
+
+  const payload = await response.json().catch(() => ({}));
+
+  if (!response.ok || !payload.verified) {
+    throw new Error(payload.error || "Payment verification failed. Please contact the NGO with your payment ID.");
+  }
+
+  return payload;
+}
 
 function setupForm(formId, messageId, storageKey, successText) {
   const form = document.querySelector(`#${formId}`);
@@ -200,12 +332,12 @@ function showMessage(element, text, type) {
   element.classList.add(type);
 }
 
-function setLoading(button, isLoading) {
+function setLoading(button, isLoading, loadingText = "Sending...") {
   if (!button) return;
   if (isLoading) {
     button.dataset.originalText = button.innerHTML;
     button.disabled = true;
-    button.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+    button.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> ${loadingText}`;
     return;
   }
 
@@ -251,9 +383,9 @@ const whatsappButton = document.querySelector("#whatsappBtn");
 const whatsappMessage = encodeURIComponent("Namaste Pandurang Pratishthan, I would like to know more about donation and volunteering.");
 whatsappButton.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${whatsappMessage}`;
 
-// RAZORPAY PAYMENT LINK:
-// Replace CONFIG.razorpayPaymentLink with your real payment link and update the placeholder anchor if needed.
-// For Razorpay Payment Button scripts, paste the official script in index.html where marked.
+// RAZORPAY:
+// Add RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in Vercel environment variables.
+// The browser calls /api/create-order and /api/verify-payment so secret keys never ship to users.
 
 // EMAILJS:
 // Include EmailJS browser SDK in index.html, then use CONFIG.emailJs values here to send email.

@@ -185,6 +185,18 @@ select {
   font-size: 1.14rem;
 }
 
+.hero-motto {
+  display: inline-flex;
+  max-width: 680px;
+  margin: 16px 0 0;
+  padding: 10px 14px;
+  border-left: 4px solid var(--saffron);
+  border-radius: var(--radius);
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: 700;
+}
+
 .eyebrow {
   margin: 0 0 12px;
   color: var(--saffron);
@@ -355,6 +367,35 @@ select {
   font-size: 1.08rem;
 }
 
+.quote-band {
+  padding: 34px 0;
+  color: var(--white);
+  background: linear-gradient(120deg, var(--navy), var(--green));
+}
+
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.quote-grid blockquote {
+  border-color: rgba(255, 255, 255, 0.18);
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+.quote-grid blockquote p {
+  color: var(--white);
+  font-size: 1.16rem;
+  font-weight: 900;
+}
+
+.quote-grid blockquote cite {
+  color: rgba(255, 255, 255, 0.78);
+}
+
 .section-heading {
   max-width: 760px;
   margin: 0 auto 40px;
@@ -477,7 +518,8 @@ blockquote p {
 }
 
 .trust-panel li,
-.bank-list li {
+.bank-list li,
+.security-list li {
   display: flex;
   justify-content: space-between;
   gap: 14px;
@@ -497,9 +539,51 @@ blockquote p {
   text-align: right;
 }
 
+.security-list {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+.security-list li {
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: var(--muted);
+}
+
+.security-list i {
+  color: var(--green);
+  margin-top: 4px;
+}
+
 .small-note {
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.motto-card {
+  margin: 0 0 16px;
+  padding: 12px;
+  border-radius: var(--radius);
+  color: var(--navy);
+  background: var(--green-soft);
+}
+
+.receipt-note {
+  display: grid;
+  gap: 4px;
+  margin: 12px 0 16px;
+  padding: 14px;
+  border-left: 4px solid var(--green);
+  border-radius: var(--radius);
+  color: var(--muted);
+  background: var(--green-soft);
+}
+
+.receipt-note strong {
+  color: var(--navy);
 }
 
 .cause-grid {
@@ -926,6 +1010,7 @@ blockquote cite {
   .about-grid,
   .before-after-grid,
   .testimonial-grid,
+  .quote-grid,
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -973,6 +1058,7 @@ blockquote cite {
   .cause-grid,
   .gallery-grid,
   .timeline,
+  .quote-grid,
   .form-grid,
   .amount-grid,
   .footer-grid {
@@ -981,12 +1067,47 @@ blockquote cite {
 
   .team-list article,
   .trust-panel li,
-  .bank-list li {
+  .bank-list li,
+  .security-list li {
     display: grid;
   }
 
   .trust-panel strong,
   .bank-list strong {
     text-align: left;
+  }
+}
+
+@media (max-width: 420px) {
+  .container,
+  .navbar {
+    width: min(100% - 22px, var(--max-width));
+  }
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .mission h2,
+  .section-heading h2,
+  .donation-grid h2,
+  .contact-grid h2 {
+    font-size: 1.85rem;
+  }
+
+  .form-card,
+  .payment-box,
+  .team-panel,
+  .trust-panel,
+  .content-card,
+  .before-after-card,
+  blockquote {
+    padding: 20px;
+  }
+
+  .nav-links {
+    inset-inline: 11px;
+    max-height: calc(100vh - 96px);
+    overflow: auto;
   }
 }

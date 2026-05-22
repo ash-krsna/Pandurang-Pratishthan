@@ -11,3 +11,11 @@ Thumbs.db
 *.log
 tmp/
 temp/
+
+# Local secrets
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
