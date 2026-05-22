@@ -15,6 +15,8 @@
   --shadow-strong: 0 28px 90px rgba(16, 35, 63, 0.22);
   --radius: 8px;
   --max-width: 1180px;
+  --font-body: "Segoe UI", Roboto, Arial, sans-serif;
+  --font-display: Georgia, "Times New Roman", serif;
 }
 
 * {
@@ -29,7 +31,7 @@ html {
 body {
   margin: 0;
   color: var(--text);
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: var(--font-body);
   line-height: 1.6;
   background:
     linear-gradient(180deg, rgba(245, 248, 251, 0.7), rgba(255, 255, 255, 0) 360px),
@@ -109,7 +111,9 @@ select {
 
 .brand strong {
   color: var(--navy);
-  font-size: 1rem;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  letter-spacing: 0;
 }
 
 .brand small {
@@ -173,6 +177,8 @@ select {
 .contact-grid h2 {
   margin: 0;
   color: inherit;
+  font-family: var(--font-display);
+  font-weight: 700;
   line-height: 1.08;
   letter-spacing: 0;
 }
@@ -326,6 +332,8 @@ select {
 .hero-impact-panel h2 {
   margin: 0;
   color: var(--navy);
+  font-family: var(--font-display);
+  font-weight: 700;
   font-size: clamp(1.8rem, 3vw, 3rem);
   line-height: 1.05;
 }
@@ -463,6 +471,8 @@ select {
   margin: 0;
   max-width: 860px;
   color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 700;
   font-size: clamp(2.1rem, 4.7vw, 5.4rem);
   line-height: 1.02;
 }
@@ -577,6 +587,8 @@ blockquote {
 .timeline h3 {
   margin: 16px 0 8px;
   color: var(--navy);
+  font-family: var(--font-display);
+  font-weight: 700;
 }
 
 .content-card p,
