@@ -2,7 +2,7 @@
 
 A production-ready static website for **Pandurang Pratishthan**, an NGO focused on education support, environment work, village cleaning, social awareness, and rural development.
 
-The website uses the logo motto **तेजोमय भवितव्याकडे** as a subtle brand accent.
+The website keeps the NGO identity visible through the official logo and English brand language.
 
 ## Live Link
 
@@ -15,7 +15,7 @@ Add Vercel URL here:
 - Responsive mobile-first layout
 - Sticky navigation with active section highlighting
 - Emotional hero section and mission statement
-- Marathi motto and selected Marathi value quotes
+- Clean values section and mission-led storytelling
 - About, vision, mission, founder/team, and trust details
 - Causes/work area cards
 - Donation form with amount selection and custom amount
