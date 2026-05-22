@@ -215,7 +215,7 @@ select {
 .trust-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
   margin-top: 28px;
 }
 
@@ -223,44 +223,59 @@ select {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  min-height: 46px;
-  padding: 12px 18px;
-  border: 0;
-  border-radius: var(--radius);
+  gap: 9px;
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 1px solid transparent;
+  border-radius: 999px;
   cursor: pointer;
+  font-size: 0.95rem;
   font-weight: 800;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  line-height: 1;
+  letter-spacing: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .btn-primary {
-  color: var(--white);
+  color: #221407;
   background: var(--saffron);
-  box-shadow: 0 12px 24px rgba(242, 140, 40, 0.25);
+  box-shadow: 0 14px 34px rgba(242, 140, 40, 0.22);
 }
 
 .btn-primary:hover {
   background: var(--saffron-dark);
+  color: var(--white);
 }
 
 .btn-secondary {
   color: var(--white);
   background: var(--green);
+  box-shadow: 0 14px 34px rgba(31, 122, 76, 0.2);
 }
 
 .btn-ghost {
   color: var(--white);
   border: 1px solid rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: none;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .btn-whatsapp {
   color: var(--white);
   background: #1fa855;
+}
+
+.btn i {
+  font-size: 0.95em;
 }
 
 .btn.full {
@@ -1143,6 +1158,7 @@ blockquote cite {
 
   .hero-actions .btn {
     width: 100%;
+    justify-content: center;
   }
 
   .hero-program-grid {
