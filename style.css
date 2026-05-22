@@ -17,6 +17,7 @@
   --max-width: 1180px;
   --font-body: "Segoe UI", Roboto, Arial, sans-serif;
   --font-display: Georgia, "Times New Roman", serif;
+  --font-marathi: "Yatra One", "Nirmala UI", "Mangal", sans-serif;
 }
 
 * {
@@ -215,6 +216,15 @@ select {
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.marathi-display {
+  font-family: var(--font-marathi);
+  font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  text-transform: none;
 }
 
 .hero-actions,
