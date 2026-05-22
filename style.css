@@ -12,6 +12,7 @@
   --muted: #667085;
   --line: #dbe4ee;
   --shadow: 0 18px 48px rgba(16, 35, 63, 0.12);
+  --shadow-strong: 0 28px 90px rgba(16, 35, 63, 0.22);
   --radius: 8px;
   --max-width: 1180px;
 }
@@ -30,7 +31,9 @@ body {
   color: var(--text);
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
   line-height: 1.6;
-  background: var(--white);
+  background:
+    linear-gradient(180deg, rgba(245, 248, 251, 0.7), rgba(255, 255, 255, 0) 360px),
+    var(--white);
 }
 
 body.menu-open {
@@ -72,7 +75,7 @@ select {
   top: 0;
   z-index: 100;
   border-bottom: 1px solid rgba(219, 228, 238, 0.9);
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(18px);
 }
 
@@ -150,7 +153,8 @@ select {
   align-items: center;
   color: var(--white);
   background:
-    linear-gradient(110deg, rgba(16, 35, 63, 0.96), rgba(16, 35, 63, 0.82)),
+    radial-gradient(circle at 88% 18%, rgba(242, 140, 40, 0.28), transparent 28%),
+    linear-gradient(110deg, rgba(16, 35, 63, 0.98), rgba(16, 35, 63, 0.82)),
     url("./assets/images/logo.png") right 12% center/54% no-repeat,
     var(--navy);
 }
@@ -175,7 +179,8 @@ select {
 
 .hero-content h1 {
   max-width: 760px;
-  font-size: clamp(2.5rem, 5vw, 5.4rem);
+  font-size: clamp(2.7rem, 5.7vw, 6.4rem);
+  letter-spacing: 0;
 }
 
 .hero-text {
@@ -277,6 +282,65 @@ select {
   position: relative;
 }
 
+.hero-impact-panel {
+  display: grid;
+  gap: 24px;
+  padding: clamp(24px, 4vw, 42px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  color: var(--navy);
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow-strong);
+}
+
+.hero-logo-mark {
+  width: min(320px, 82%);
+  margin: 0 auto;
+}
+
+.panel-kicker {
+  display: inline-flex;
+  margin-bottom: 8px;
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-impact-panel h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(1.8rem, 3vw, 3rem);
+  line-height: 1.05;
+}
+
+.hero-impact-panel p {
+  margin: 12px 0 0;
+  color: var(--muted);
+}
+
+.hero-program-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.hero-program-grid span {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px;
+  border-radius: var(--radius);
+  color: var(--navy);
+  background: var(--mist);
+  font-weight: 900;
+}
+
+.hero-program-grid i {
+  color: var(--saffron);
+}
+
 .hero-main-img {
   width: 100%;
   aspect-ratio: 1;
@@ -290,8 +354,8 @@ select {
 
 .floating-card {
   position: absolute;
-  right: -8px;
-  bottom: 28px;
+  right: -12px;
+  bottom: -18px;
   width: min(330px, 84%);
   display: flex;
   gap: 14px;
@@ -329,7 +393,7 @@ select {
   padding: 24px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  text-align: center;
+  text-align: left;
   background: var(--white);
   box-shadow: var(--shadow);
 }
@@ -365,6 +429,41 @@ select {
   margin: 0;
   color: var(--muted);
   font-size: 1.08rem;
+}
+
+.editorial-impact {
+  padding: 78px 0;
+  color: var(--white);
+  background: var(--navy);
+}
+
+.editorial-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: 54px;
+  align-items: end;
+}
+
+.editorial-grid h2 {
+  margin: 0;
+  max-width: 860px;
+  color: var(--white);
+  font-size: clamp(2.1rem, 4.7vw, 5.4rem);
+  line-height: 1.02;
+}
+
+.editorial-copy p {
+  margin: 0 0 22px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.06rem;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--saffron);
+  font-weight: 900;
 }
 
 .quote-band {
@@ -587,11 +686,17 @@ blockquote p {
 }
 
 .cause-grid {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
 }
 
 .cause-card {
   overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cause-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
 }
 
 .cause-card img {
@@ -963,7 +1068,8 @@ blockquote cite {
   .donation-grid,
   .form-section-grid,
   .contact-grid,
-  .team-trust-grid {
+  .team-trust-grid,
+  .editorial-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1047,6 +1153,14 @@ blockquote cite {
     width: 100%;
   }
 
+  .hero-program-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-impact-panel {
+    border-radius: 16px;
+  }
+
   .floating-card {
     position: static;
     width: 100%;
@@ -1091,7 +1205,8 @@ blockquote cite {
   .mission h2,
   .section-heading h2,
   .donation-grid h2,
-  .contact-grid h2 {
+  .contact-grid h2,
+  .editorial-grid h2 {
     font-size: 1.85rem;
   }
 
