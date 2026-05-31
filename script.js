@@ -422,6 +422,34 @@ const whatsappButton = document.querySelector("#whatsappBtn");
 const whatsappMessage = encodeURIComponent("Namaste Pandurang Pratishthan, I would like to know more about donation and volunteering.");
 whatsappButton.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${whatsappMessage}`;
 
+const previewVideos = document.querySelectorAll(".video-preview-card video");
+
+previewVideos.forEach((video) => {
+  const card = video.closest(".video-preview-card");
+  const playPreview = () => {
+    video.muted = true;
+    video.play().catch(() => {
+      video.dataset.previewPaused = "true";
+    });
+  };
+
+  video.addEventListener("canplay", playPreview, { once: true });
+
+  if (video.readyState >= 3) {
+    playPreview();
+  }
+
+  if (card) {
+    card.addEventListener("click", () => {
+      if (video.paused) {
+        playPreview();
+      } else {
+        video.pause();
+      }
+    });
+  }
+});
+
 // RAZORPAY:
 // Add RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in Vercel environment variables.
 // The browser calls /api/create-order and /api/verify-payment so secret keys never ship to users.

@@ -677,45 +677,69 @@ select {
   line-height: 1.1;
 }
 
-.story-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 16px;
-  color: rgba(255, 255, 255, 0.86);
-  font-weight: 900;
-}
-
 .video-reference-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 18px;
+  gap: 18px;
+  margin-top: 22px;
 }
 
-.video-reference-grid a {
+.video-preview-card {
+  position: relative;
+  min-height: 220px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 24px;
+  background: var(--navy);
+  box-shadow: 0 18px 42px rgba(16, 35, 63, 0.12);
+  isolation: isolate;
+}
+
+.video-preview-card video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.98) contrast(1.04);
+}
+
+.video-preview-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(16, 35, 63, 0.05), rgba(16, 35, 63, 0.82)),
+    linear-gradient(90deg, rgba(16, 35, 63, 0.28), transparent 60%);
+}
+
+.video-preview-card div {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 12px;
-  min-height: 64px;
-  padding: 14px 16px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  color: var(--navy);
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 12px 30px rgba(16, 35, 63, 0.07);
-  font-weight: 900;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
 }
 
-.video-reference-grid i {
+.video-preview-card i {
   width: 36px;
   height: 36px;
   display: grid;
   place-items: center;
   flex: 0 0 auto;
   border-radius: 999px;
-  color: var(--white);
-  background: var(--green);
+  color: var(--navy);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
 }
 
 .section-heading {
@@ -1491,6 +1515,11 @@ blockquote cite {
   .story-card,
   .story-card-large {
     min-height: 390px;
+  }
+
+  .video-preview-card {
+    min-height: 210px;
+    border-radius: 18px;
   }
 
   .story-card div {
