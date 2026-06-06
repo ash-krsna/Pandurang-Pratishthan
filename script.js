@@ -422,7 +422,7 @@ const whatsappButton = document.querySelector("#whatsappBtn");
 const whatsappMessage = encodeURIComponent("Namaste Pandurang Pratishthan, I would like to know more about donation and volunteering.");
 whatsappButton.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${whatsappMessage}`;
 
-const previewVideos = document.querySelectorAll(".video-preview-card video");
+const previewVideos = document.querySelectorAll(".video-preview-card video, .hero-bg-video");
 
 previewVideos.forEach((video) => {
   const card = video.closest(".video-preview-card");
